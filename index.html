@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>HW_4_2</title>
+</head>
+<body>
+    <h1>Я новый заголовк</h1>
+    <script>
+        const DISPLAY_HEIGTH = document.documentElement.clientHeight;
+        const DISPLAY_WIDTH = document.documentElement.clientWidth;
+
+        createNewLine();
+
+        function createNewLine(){
+            setInterval(() => {
+                let h1 = document.createElement('h1');
+                h1.innerHTML = 'Я новый заголовк';
+                h1.style.color = getRandomColor();
+                h1.style.top = getRandomHeigth();
+                h1.style.left = getRandomWidth();
+                
+                document.getElementsByTagName('body')[0].append(h1);
+            }, 250); // одна секунда - очень долго =)
+        }
+
+        function getRandomHeigth() { return getRandomNumber(DISPLAY_HEIGTH - 40) + 'px'; }
+        function getRandomWidth() { return getRandomNumber(DISPLAY_WIDTH - 270) + 'px'; }
+
+        function getRandomColor() { 
+            return `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`; 
+        }
+
+        function getRandomNumber(maxNumber){
+            return Math.floor(Math.random() * maxNumber);
+        }
+    </script>
+</body>
+</html>
